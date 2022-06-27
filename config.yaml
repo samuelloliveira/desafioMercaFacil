@@ -1,0 +1,60 @@
+# Reports configuration file to import.
+#
+# default_null(not required) :int: -> sets the default number for null fields
+# default_null(not required) :string: -> when used "date_now" sets the current date
+# format(required) :string: -> only for dates. e.g. %d = DD; %m = MM; %Y = AAAA; %y = AA. e.g. "%d%m%Y".
+# max_len(not required) :int: -> sets a maximum size for the field
+# min_len(not required) :int: -> sets a minimum size for the field
+# empty(required) :boolean: -> true if null values are accepted and false if null values aren't accepted.
+# path(required) :str: -> The file path.
+# separator(required) :str: -> set the character used to separate day, month and year.
+# type(required) :str: -> set column to string
+# type(required) :int: -> set column to integer
+# unique(not required) :boolean: -> true if repeated values are accepted and false if repeated values aren't accepted.
+
+files:
+  cliente:
+    path: "raw/cliente.csv"
+    columns:
+      - nome:
+          empty: false
+          type: str
+          min_len: 3
+          max_len: 19
+      - telefone:
+          empty: false
+          type: str
+          min_len: 8
+      - cod_cliente:
+          empty: false
+          type: int
+          unique: true
+      - data_cadastro:
+          empty: false
+          default_null: date_now
+          type: date
+          format: "%d%m%Y"
+          separator: "/"
+      - tipo_cliente:
+          empty: true
+          type: str
+
+  vendas_itens:
+    path: "raw/vendas_itens.csv"
+    columns:
+      - codigo_venda:
+          empty: false
+          type: str
+      - valor_unitario:
+          empty: false
+          type: float
+      - quantidade_produto:
+          empty: false
+          default_null: 0
+          type: float
+      - codigo_produto:
+          empty: false
+          type: int
+      - cod_cliente:
+          empty: false
+          type: int
