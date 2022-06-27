@@ -1,3 +1,15 @@
+# Instalar
+Para usar o script você deve instalar um ambiente virtual e adicionar todas as bibliotecas utilizadas. Para isso, use o comando  a seguir com o ambiente virtual ativo:
+
+```pip install -r requiriments.txt```
+
+Uma vez que todas as bibliotecas estejam instaladas, basta rodar o `main.py`, que está na raiz do projeto, utilizando comando ```python main.py```.
+
+## Testes
+Alguns testes foram sugeridos e podem ser consultados na pasta `tests`. Para executá-los basta rodar o seguinte comando: `pytest`.
+
+---
+
 # Teste Mercafacil
 
 Você recebe diariamente dois arquivos no formato CSV com algumas dados de vendas, esses dados devem passar por uma *pipeline* que realizará varias transformações para por fim disponibilizar essas informações ao varejista. Em uma das etapas dessa *pipeline* são realizadas um conjunto de validações e transformações, entre elas as seguintes:
